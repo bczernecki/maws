@@ -1,0 +1,14 @@
+[Unit]
+Description=MAWS log watcher
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+User=test
+Environment=PGPASSFILE=/home/test/.pgpass
+ExecStart=/usr/bin/python3 /home/test/maws_watcher.py /home/test/meteo_data.txt --pg 'dbname=meteo user=postgres host=mrozowiska.pl sslmode=require'
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
