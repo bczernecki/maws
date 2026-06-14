@@ -9,10 +9,20 @@ Usługi działają na zasadzie daemonów uruchamianych przez `systemd`:
 2. /home/test/maws_watcher.py - parsuje dane z pliku meteo_data.txt i wysyła do postgresql (mrozowiska.pl)
 
 
-### usuwanie duplikatów z postgresa:
+### tworzenie HTMLa
 
+python3 maws_dashboard_gen.py     --pg 'dbname=meteo user=postgres host=mrozowiska.pl sslmode=require password=...'     --out meteo.html
+
+wpis do crona:
+
+```
+* * * * * cd /home/test/ ; curl -v --insecure --ftp-ssl --ftp-ssl-reqd -T meteo.html ftp://ftp.web.amu.edu.pl/klimat/meteo.html --user "klimat:.."
+```
+
+### usuwanie duplikatów z postgresa:
 
 Bez dodania `--apply` tylko pokaże liczbę duplikatów, zatem:
 ```
 python3 remove_duplicates.py --pg 'dbname=meteo user=postgres host=mrozowiska.pl password=!!!!' --apply 
 ```
+
