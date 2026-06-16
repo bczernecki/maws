@@ -163,14 +163,14 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
         :root {
-            --bg: #0f111a; --panel-bg: #1e2130; --text: #e2e8f0;
-            --accent: #00e676; --accent-glow: rgba(0, 230, 118, 0.3);
-            --temp: #ff4757; --temp-glow: rgba(255, 71, 87, 0.3);
-            --hum: #1e90ff; --hum-glow: rgba(30, 144, 255, 0.3);
-            --press: #a55eea; --press-glow: rgba(165, 94, 234, 0.3);
-            --wind: #fbc531; --wind-glow: rgba(251, 197, 49, 0.3);
-            --solar: #ffa502; --solar-glow: rgba(255, 165, 2, 0.3);
-            --rain: #00d8d6; --rain-glow: rgba(0, 216, 214, 0.3);
+            --bg: #ffffff; --panel-bg: #f7f9fc; --text: #1f2937; --border: #e6eaf0;
+            --accent: #0ca678; --accent-glow: rgba(12, 166, 120, 0.25);
+            --temp: #e11d48; --temp-glow: rgba(225, 29, 72, 0.18);
+            --hum: #2563eb; --hum-glow: rgba(37, 99, 235, 0.18);
+            --press: #7c3aed; --press-glow: rgba(124, 58, 237, 0.18);
+            --wind: #d97706; --wind-glow: rgba(217, 119, 6, 0.18);
+            --solar: #ea580c; --solar-glow: rgba(234, 88, 12, 0.18);
+            --rain: #0891b2; --rain-glow: rgba(8, 145, 178, 0.18);
         }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 20px; }
         h1 { text-align: center; color: var(--text); font-weight: 800; letter-spacing: 1px; margin-bottom: 5px; }
@@ -180,40 +180,40 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         .card {
             background: var(--panel-bg); border-radius: 16px; padding: 20px;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4); border-top: 5px solid #333; position: relative;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08); border: 1px solid var(--border); border-top: 5px solid #cbd5e1; position: relative;
         }
-        .card-title { font-size: 0.95em; color: #94a3b8; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; margin-bottom: 15px; }
+        .card-title { font-size: 0.95em; color: #64748b; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; margin-bottom: 15px; text-align: center; }
 
         .stats-container { display: flex; flex-direction: column; align-items: center; width: 100%; }
-        .stat-edge { font-size: 0.9rem; color: #64748b; font-weight: 600; line-height: 1.2; display: flex; align-items: center; gap: 5px;}
+        .stat-edge { font-size: 0.9rem; color: #94a3b8; font-weight: 600; line-height: 1.2; display: flex; align-items: center; gap: 5px;}
         .stat-edge.max { margin-bottom: 5px; }
         .stat-edge.min { margin-top: 5px; }
-        .stat-edge span { font-weight: 800; color: #cbd5e1; }
+        .stat-edge span { font-weight: 800; color: #475569; }
 
-        .card-value { font-size: 2.8rem; font-weight: 800; line-height: 1; text-shadow: 0 0 20px rgba(255,255,255,0.1); }
-        .card-unit { font-size: 1rem; color: #94a3b8; font-weight: 600; margin-left: 4px; }
+        .card-value { font-size: 2.8rem; font-weight: 800; line-height: 1; }
+        .card-unit { font-size: 1rem; color: #64748b; font-weight: 600; margin-left: 4px; }
 
-        .card.temp { border-color: var(--temp); } .card.temp .card-value { color: var(--temp); text-shadow: 0 0 20px var(--temp-glow); }
-        .card.hum { border-color: var(--hum); } .card.hum .card-value { color: var(--hum); text-shadow: 0 0 20px var(--hum-glow); }
-        .card.press { border-color: var(--press); } .card.press .card-value { color: var(--press); text-shadow: 0 0 20px var(--press-glow); }
-        .card.wind { border-color: var(--wind); } .card.wind .card-value { color: var(--wind); text-shadow: 0 0 20px var(--wind-glow); }
-        .card.solar { border-color: var(--solar); } .card.solar .card-value { color: var(--solar); text-shadow: 0 0 20px var(--solar-glow); }
-        .card.rain { border-color: var(--rain); } .card.rain .card-value { color: var(--rain); text-shadow: 0 0 20px var(--rain-glow); }
+        .card.temp { border-top-color: var(--temp); } .card.temp .card-value { color: var(--temp); }
+        .card.hum { border-top-color: var(--hum); } .card.hum .card-value { color: var(--hum); }
+        .card.press { border-top-color: var(--press); } .card.press .card-value { color: var(--press); }
+        .card.wind { border-top-color: var(--wind); } .card.wind .card-value { color: var(--wind); }
+        .card.solar { border-top-color: var(--solar); } .card.solar .card-value { color: var(--solar); }
+        .card.rain { border-top-color: var(--rain); } .card.rain .card-value { color: var(--rain); }
 
         .controls { text-align: center; margin-bottom: 30px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
         button {
-            background: #2d3446; color: #94a3b8; border: none; padding: 10px 25px; border-radius: 8px;
+            background: #eef2f7; color: #475569; border: 1px solid var(--border); padding: 10px 25px; border-radius: 8px;
             cursor: pointer; font-weight: 600; font-size: 0.95rem; transition: all 0.2s ease;
         }
-        button.active, button:hover { background: var(--accent); color: #000; box-shadow: 0 0 15px var(--accent-glow); }
+        button.active, button:hover { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: 0 4px 12px var(--accent-glow); }
 
         .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
         @media (max-width: 1200px) { .chart-grid { grid-template-columns: 1fr; } }
-        .chart-container { background: var(--panel-bg); border-radius: 16px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
+        .chart-container { background: var(--panel-bg); border-radius: 16px; padding: 20px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08); border: 1px solid var(--border); }
 
-        .terminal-header { color: var(--accent); font-weight: 800; font-size: 1.2rem; margin-top: 40px; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
-        .terminal { background: #0b0c10; border: 2px solid #2d3446; border-radius: 12px; padding: 15px; font-family: 'Consolas', monospace; height: 300px; overflow-y: auto; color: #a4ff88; }
-        .terminal-line { margin: 4px 0; font-size: 0.9em; border-bottom: 1px solid #1e2130; padding-bottom: 4px; }
+        .terminal-header { color: var(--text); font-weight: 800; font-size: 1.2rem; margin-top: 40px; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
+        .terminal { background: #f4f6f8; border: 1px solid var(--border); border-radius: 12px; padding: 15px; font-family: 'Consolas', monospace; height: 300px; overflow-y: auto; color: #334155; }
+        .terminal-line { margin: 4px 0; font-size: 0.9em; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
         .term-wind { color: var(--wind); } .term-ptu { color: var(--accent); }
     </style>
 </head>
@@ -260,7 +260,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         </div>
 
         <div class="card solar">
-            <div class="card-title">&#346;wiat&#322;o</div>
+            <div class="card-title">Promieniowanie s&#322;oneczne</div>
             <div class="stats-container">
                 <div class="stat-edge max">&#9650; MAX: <span id="max-solar">--</span></div>
                 <div><span class="card-value" id="cur-solar">--</span><span class="card-unit">W/m&sup2;</span></div>
@@ -303,8 +303,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         let ptuChartInstance, windChartInstance, pressChartInstance, solarRainChartInstance;
         let currentTimeRangeHours = 24;
 
-        Chart.defaults.color = '#94a3b8';
-        Chart.defaults.borderColor = '#2d3446';
+        Chart.defaults.color = '#475569';
+        Chart.defaults.borderColor = '#e6eaf0';
         Chart.defaults.font.family = "'Inter', sans-serif";
 
         function setTimeRange(hours) {
@@ -328,8 +328,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             ptuChartInstance = new Chart(document.getElementById('ptuChart'), {
                 type: 'line',
                 data: { datasets: [
-                    { label: 'Temp (\u00B0C)', data: [], borderColor: '#ff4757', backgroundColor: 'rgba(255, 71, 87, 0.1)', fill: true, yAxisID: 'yTemp', tension: 0.4, pointRadius: 0, borderWidth: 2 },
-                    { label: 'Wilg (%)', data: [], borderColor: '#1e90ff', yAxisID: 'yHum', tension: 0.4, pointRadius: 0, borderWidth: 2 }
+                    { label: 'Temp (\u00B0C)', data: [], borderColor: '#e11d48', backgroundColor: 'rgba(225, 29, 72, 0.10)', fill: true, yAxisID: 'yTemp', tension: 0.4, pointRadius: 0, borderWidth: 2 },
+                    { label: 'Wilg (%)', data: [], borderColor: '#2563eb', yAxisID: 'yHum', tension: 0.4, pointRadius: 0, borderWidth: 2 }
                 ]},
                 options: {
                     ...commonOptions,
@@ -344,8 +344,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             windChartInstance = new Chart(document.getElementById('windChart'), {
                 type: 'line',
                 data: { datasets: [
-                    { label: 'Pr\u0119dko\u015B\u0107 Wiatru (m/s)', data: [], borderColor: '#fbc531', backgroundColor: 'rgba(251, 197, 49, 0.1)', fill: true, yAxisID: 'ySpeed', tension: 0.3, pointRadius: 1, borderWidth: 2 },
-                    { type: 'scatter', label: 'Kierunek (\u00B0)', data: [], backgroundColor: '#00e676', yAxisID: 'yDir', pointRadius: 3 }
+                    { label: 'Pr\u0119dko\u015B\u0107 Wiatru (m/s)', data: [], borderColor: '#d97706', backgroundColor: 'rgba(217, 119, 6, 0.10)', fill: true, yAxisID: 'ySpeed', tension: 0.3, pointRadius: 1, borderWidth: 2 },
+                    { type: 'scatter', label: 'Kierunek (\u00B0)', data: [], backgroundColor: '#0ca678', yAxisID: 'yDir', pointRadius: 3 }
                 ]},
                 options: {
                     ...commonOptions,
@@ -360,7 +360,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             pressChartInstance = new Chart(document.getElementById('pressChart'), {
                 type: 'line',
                 data: { datasets: [
-                    { label: 'Ci\u015Bnienie (hPa)', data: [], borderColor: '#a55eea', backgroundColor: 'rgba(165, 94, 234, 0.1)', fill: true, tension: 0.4, pointRadius: 0, borderWidth: 2 }
+                    { label: 'Ci\u015Bnienie (hPa)', data: [], borderColor: '#7c3aed', backgroundColor: 'rgba(124, 58, 237, 0.10)', fill: true, tension: 0.4, pointRadius: 0, borderWidth: 2 }
                 ]},
                 options: {
                     ...commonOptions,
@@ -374,14 +374,14 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             solarRainChartInstance = new Chart(document.getElementById('solarRainChart'), {
                 type: 'line',
                 data: { datasets: [
-                    { label: 'S\u0142o\u0144ce (W/m\u00B2)', data: [], borderColor: '#ffa502', backgroundColor: 'rgba(255, 165, 2, 0.2)', fill: true, yAxisID: 'ySolar', tension: 0.4, pointRadius: 0, borderWidth: 2 },
-                    { type: 'bar', label: 'Opady (mm)', data: [], backgroundColor: '#00d8d6', yAxisID: 'yRain', borderRadius: 4 }
+                    { label: 'Promieniowanie (W/m\u00B2)', data: [], borderColor: '#ea580c', backgroundColor: 'rgba(234, 88, 12, 0.15)', fill: true, yAxisID: 'ySolar', tension: 0.4, pointRadius: 0, borderWidth: 2 },
+                    { type: 'bar', label: 'Opady (mm)', data: [], backgroundColor: '#0891b2', yAxisID: 'yRain', borderRadius: 4 }
                 ]},
                 options: {
                     ...commonOptions,
                     scales: {
                         x: commonOptions.scales.x,
-                        ySolar: { type: 'linear', position: 'left', beginAtZero: true, title: {display: true, text: 'S\u0142o\u0144ce (W/m\u00B2)'} },
+                        ySolar: { type: 'linear', position: 'left', beginAtZero: true, title: {display: true, text: 'Promieniowanie (W/m\u00B2)'} },
                         yRain: { type: 'linear', position: 'right', beginAtZero: true, grid: { drawOnChartArea: false }, title: {display: true, text: 'Opady (mm)'} }
                     }
                 }
