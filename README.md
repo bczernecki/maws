@@ -4,7 +4,7 @@
 
 Usługi działają na zasadzie daemonów uruchamianych przez `systemd`:
 
-1. /home/test/meteo.py - pobiera dane ze stacji poprzez TTY i wysyła na serwer Adama
+1. /home/test/meteo.py - pobiera dane ze stacji poprzez TTY
 
 2. /home/test/maws_watcher.py - parsuje dane z pliku meteo_data.txt i wysyła do postgresql (mrozowiska.pl)
 
@@ -16,7 +16,7 @@ python3 maws_dashboard_gen.py     --pg 'dbname=meteo user=postgres host=mrozowis
 wpis do crona:
 
 ```
-* * * * * cd /home/test/ ; curl -v --insecure --ftp-ssl --ftp-ssl-reqd -T meteo.html ftp://ftp.web.amu.edu.pl/klimat/meteo.html --user "klimat:.."
+* * * * * cd /home/test/ ; curl -v --insecure --ftp-ssl --ftp-ssl-reqd -T meteo.html ftp://ftp.web.amu.edu.pl/klimat/meteo/index.html --user "klimat:.."
 ```
 
 ### usuwanie duplikatów z postgresa:
